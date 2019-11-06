@@ -5,6 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var cookieSession = require('cookie-session');
+var flash = require('connect-flash');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI');
@@ -25,6 +30,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/testAPI', testAPIRouter);
+
+app.use(cookieSession({
+  keys: ['node_lee'],
+  cookie: {
+    maxAge: 1000 * 60 * 60
+  }
+}))
+
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
