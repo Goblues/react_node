@@ -14,12 +14,14 @@ var pool = mysql.createPool({
 
 router.get('/', (req, res, next) => {
     //res.render('index', { title: 'Login' });
-    res.render('login.html');
+    res.render('login.jade');
 });
 
-router.post('/', passport.authenticate('local', {failureRedirect: '/login', failureFlash: true}), (req, res) =>{
-    res.redirect('/main');
-});
+router.post('/', passport.authenticate('local', {
+    successRedirect: '/main',
+    failureRedirect: '/login', 
+    failureFlash: true}
+    ));
 
 passport.use(new LocalStrategy({
     usernameField: 'username',
@@ -27,6 +29,7 @@ passport.use(new LocalStrategy({
     passReqToCallback: true
 }, (req, username, password, done) =>{
     if(username === 'user001' && password === 'password'){
+        console.log("user confirmed");
         return done(null, {
             'user_id' : username,
         });
@@ -36,6 +39,7 @@ passport.use(new LocalStrategy({
 }))
 
 passport.serializeUser((user, done) => {
+    console.log("serialized user");
     done(null, user);
 })
 

@@ -12,7 +12,8 @@ var pool = mysql.createPool({
 })
 
 router.get('/', (req, res, next) => {
-    res.render('index', { title: 'Main' });
+    var id = req.user.user_id;
+    res.render('index', { title: 'Main' , username: id});
 })
 
 module.exports = router;
