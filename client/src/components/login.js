@@ -27,7 +27,7 @@ class Login extends Component {
         <GoogleLoginButton className="mt-3 mb-3" />
         <FacebookLoginButton className="mt-3 mb-3" />
         <div className="text-center">
-          <a href="/sign-up">Sign up</a>
+          <a href="/signup">Sign up</a>
           <span className="p-2">|</span>
           <a href="/forgot-password">Forgot Password</a>
         </div>
