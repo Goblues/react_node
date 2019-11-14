@@ -12,12 +12,28 @@ import {
   CardMenu,
   IconButton
 } from "react-mdl";
+import Teacher2 from "./teacher2";
 
 class Teacher extends Component {
   constructor(props) {
     super(props);
     this.state = { activeTab: 0 };
   }
+  state = {
+    teachers: ""
+  };
+
+  componentDidMount() {
+    this.callApi()
+      .then(res => this.setState({ teachers: res }))
+      .catch(err => console.log(err));
+  }
+
+  callApi = async () => {
+    const response = await fetch("http://localhost:9000/users");
+    const body = await response.json();
+    return body;
+  };
 
   toggleCategories() {
     if (this.state.activeTab === 0) {
@@ -46,9 +62,22 @@ class Teacher extends Component {
       );
     } else if (this.state.activeTab === 1) {
       return (
-        <div>
-          <h1>This is Pilates</h1>
-        </div>
+        <Card>
+          {" "}
+          {this.state.teachers
+            ? this.state.teachers.map(t => {
+                return (
+                  <Teacher2
+                    key={t.id}
+                    id={t.id}
+                    image={t.image}
+                    name={t.name}
+                    text={t.text}
+                  />
+                );
+              })
+            : ""}
+        </Card>
       );
     } else if (this.state.activeTab === 2) {
       return (
@@ -79,7 +108,6 @@ class Teacher extends Component {
           <Tab>G.X</Tab>
         </Tabs>
         <section className="teacher-grid">
-          {/*this.toggleCategories()*/}
           <Grid className="teacher-grid">
             <Cell col={12}>
               <div className="content">{this.toggleCategories()}</div>
