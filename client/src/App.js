@@ -33,6 +33,7 @@ class App extends Component {
               <Link to="/teacher">Teacher</Link>
               <Link to="/kakaomap">Kakaomap</Link>
               <Link to="/login">Login</Link>
+              <Link to="/signup">Signup</Link>
             </Navigation>
           </Header>
           <Drawer title="G.X Platform">
