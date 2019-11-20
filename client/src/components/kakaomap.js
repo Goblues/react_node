@@ -21,12 +21,14 @@ class Kakaomap extends Component {
   }
 
   componentDidMount() {
+    //동적 로딩
     const script = document.createElement("script");
     script.async = true;
     script.src =
-      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=fba789bf140b6fc6a1e71b4b0495d609&autoload=false";
+      "https://dapi.kakao.com/v2/maps/sdk.js?appkey=fba789bf140b6fc6a1e71b4b0495d609&autoload=false&libraries=clusterer";
     document.head.appendChild(script);
 
+    // 원래버전
     script.onload = () => {
       kakao.maps.load(() => {
         var el = document.getElementById("map");
@@ -34,22 +36,10 @@ class Kakaomap extends Component {
           center: new kakao.maps.Coords(523951.25, 1085073.75)
         });
 
-        // 마커이미지 바꾸기
-        // var imageSrc =
-        //     "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png",
-        //   imageSize = new kakao.maps.Size(64.69),
-        //   imageOption = { offset: new kakao.maps.Point(27, 69) };
-
-        // var markerImage = new kakao.maps.markerImage(
-        //   imageSrc,
-        //   imageSize,
-        //   imageOption
-        // );
-
         var marker = new kakao.maps.Marker({
-          position: map.getCenter()
-          // position: markerPosition,
-          // image: markerImage
+          //position: map.getCenter()
+          //position: markerPosition,
+          //image: markerImage
         });
 
         marker.setMap(map);
@@ -66,6 +56,44 @@ class Kakaomap extends Component {
         });
       });
     };
+
+    // const script2 = document.createElement("script");
+    // script2.async = true;
+    // script2.src =
+    //   "https://dapi.kakao.com/v2/maps/sdk.js?appkey=fba789bf140b6fc6a1e71b4b0495d609&libraries=services,drawing";
+
+    // script2.onload = () => {
+    //   var el = document.getElementById("map");
+    //   var map = new kakao.maps.Map(el);
+    //   // 마커이미지 바꾸기
+    //   var imageSrc =
+    //       "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png",
+    //     imageSize = new kakao.maps.Size(64.69),
+    //     imageOption = { offset: new kakao.maps.Point(27, 69) };
+
+    //   var markerImage = new kakao.maps.markerImage(
+    //     imageSrc,
+    //     imageSize,
+    //     imageOption
+    //   );
+    //   var marker = new kakao.maps.Marker({
+    //     position: map.getCenter(),
+    //     // position: markerPosition,
+    //     image: markerImage
+    //   });
+
+    //   //마커 인포윈도우 띄우기
+    //   var iwContent = '<div style="padding:5px;">Hello World!</div>';
+    //   var infowindow = new kakao.maps.Infowindow({
+    //     content: iwContent
+    //   });
+    //   kakao.maps.event.addListener(marker, "mouseover", function() {
+    //     infowindow.open(map, marker);
+    //   });
+    //   kakao.maps.event.addListener(marker, "mouseout", function() {
+    //     infowindow.close();
+    //   });
+    // };
   }
 
   kakaoregister() {
