@@ -39,6 +39,22 @@ class Kakaomap extends Component {
           resultlat.innerHTML = latitude;
           resultlong.innerHTML = longitude;
         });
+        var clusterer = new kakao.maps.MarkerClusterer({
+          map: map,
+          averageCenter: true,
+          minLevel: 10
+        });
+        $.get(
+          "http://apis.map.kakao.com/download/web/data/chicken.json",
+          function(data) {
+            var markers = $(data.positions).map(function(i, position) {
+              return new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(position.lat, position.lng)
+              });
+            });
+            clusterer.addMarkers(markers);
+          }
+        );
       });
     };
   }
