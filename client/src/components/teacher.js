@@ -19,7 +19,7 @@ class Teacher extends Component {
     this.state = { activeTab: 0 };
   }
 
-  teaturecard = props => {
+  teachercard = props => {
     return (
       <div>
         <Row>
@@ -49,7 +49,7 @@ class Teacher extends Component {
 
   toggleCategories() {
     if (this.state.activeTab === 0) {
-      return <div>{this.teaturecard()}</div>;
+      return <div>{this.teachercard()}</div>;
     } else if (this.state.activeTab === 1) {
       return (
         <div>
