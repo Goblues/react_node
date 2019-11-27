@@ -31,7 +31,7 @@ class App extends Component {
             <Navigation>
               <Link to="/">HOME</Link>
               <Link to="/teacher">TEACHER</Link>
-              <Link to="/kakaomap">KAKAOMAP</Link>
+              <Link to="/kakaomap">MAP</Link>
               <Link to="/login">LOGIN</Link>
               <Link to="/signup">SIGNUP</Link>
             </Navigation>
@@ -40,7 +40,7 @@ class App extends Component {
             <Navigation>
               <Link to="/">HOME</Link>
               <Link to="/teacher">TEACHER</Link>
-              <Link to="/kakaomap">KAKAOMAP</Link>
+              <Link to="/kakaomap">MAP</Link>
             </Navigation>
           </Drawer>
           <Content>

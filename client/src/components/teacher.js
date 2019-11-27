@@ -23,7 +23,7 @@ class Teacher extends Component {
     return (
       <div>
         <Row>
-          <Col sm="6">
+          <Col sm="3">
             <Card>
               <CardBody>
                 <CardTitle>Jung Jin Woo</CardTitle>

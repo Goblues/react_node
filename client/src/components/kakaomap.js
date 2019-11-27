@@ -20,7 +20,8 @@ class Kakaomap extends Component {
       kakao.maps.load(() => {
         var el = document.getElementById("map");
         var map = new kakao.maps.Map(el, {
-          center: new kakao.maps.Coords(523951.25, 1085073.75)
+          center: new kakao.maps.Coords(499000.25, 1125000.75),
+          level: 7
         });
         // var marker = new kakao.maps.Marker({});
         // marker.setMap(map);
@@ -138,37 +139,73 @@ class Kakaomap extends Component {
 
   render() {
     return (
-      <div className="kakaomap" id="map">
-        <div
-          style={{ position: "fixed", bottom: "80px", right: "150px" }}
-          id="lat"
-        ></div>
-        <div
-          style={{ position: "fixed", bottom: "60px", right: "150px" }}
-          id="long"
-        ></div>
-        <div
-          style={{ position: "fixed", top: "75px", right: "85px" }}
-          className="category-tabs"
-        >
-          <Tabs
-            activeTab={this.state.activeTab}
-            onChange={tabId => this.setState({ activeTab: tabId })}
-            ripple
-          >
-            <Tab>Home</Tab>
-            <Tab>Register</Tab>
-            <Tab>Join</Tab>
-          </Tabs>
-          <section className="teacher-grid">
-            <Grid className="teacher-grid">
-              <Cell col={12}>
-                <div className="content">{this.kakaoregister()}</div>
-              </Cell>
-            </Grid>
-          </section>
-        </div>
+      <div style={{ width: "100%", height: "100%" }}>
+        <Grid className="demo-grid-2" noSpacing="false">
+          <Cell col={8}>
+            <div className="kakaomap" id="map">
+              <div
+                style={{ position: "fixed", bottom: "80px", right: "150px" }}
+                id="lat"
+              ></div>
+              <div
+                style={{ position: "fixed", bottom: "60px", right: "150px" }}
+                id="long"
+              ></div>
+            </div>
+          </Cell>
+          <Cell col={4}>
+            <div className="category-tabs">
+              <Tabs
+                activeTab={this.state.activeTab}
+                onChange={tabId => this.setState({ activeTab: tabId })}
+                ripple
+              >
+                <Tab>Home</Tab>
+                <Tab>Register</Tab>
+                <Tab>Join</Tab>
+              </Tabs>
+              <section className="teacher-grid">
+                <Grid className="teacher-grid">
+                  <Cell col={12}>
+                    <div className="content">{this.kakaoregister()}</div>
+                  </Cell>
+                </Grid>
+              </section>
+            </div>
+          </Cell>
+        </Grid>
       </div>
+      // <div className="kakaomap" id="map">
+      // <div
+      //   style={{ position: "fixed", bottom: "80px", right: "150px" }}
+      //   id="lat"
+      // ></div>
+      // <div
+      //   style={{ position: "fixed", bottom: "60px", right: "150px" }}
+      //   id="long"
+      // ></div>
+      //   <div
+      //     style={{ position: "fixed", top: "75px", right: "85px" }}
+      //     className="category-tabs"
+      //   >
+      // <Tabs
+      //   activeTab={this.state.activeTab}
+      //   onChange={tabId => this.setState({ activeTab: tabId })}
+      //   ripple
+      // >
+      //   <Tab>Home</Tab>
+      //   <Tab>Register</Tab>
+      //   <Tab>Join</Tab>
+      // </Tabs>
+      // <section className="teacher-grid">
+      //   <Grid className="teacher-grid">
+      //     <Cell col={12}>
+      //       <div className="content">{this.kakaoregister()}</div>
+      //     </Cell>
+      //   </Grid>
+      // </section>
+      //   </div>
+      // </div>
     );
   }
 }

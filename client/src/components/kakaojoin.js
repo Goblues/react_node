@@ -7,16 +7,21 @@ class Kakaoregister extends Component {
   render() {
     return (
       <div>
-        <Card body>
-          <CardTitle>Cycle</CardTitle>
-          <CardText>People: 4</CardText>
-          <Button>Join</Button>
-        </Card>
-        <Card body>
-          <CardTitle>Workout</CardTitle>
-          <CardText>People: 4</CardText>
-          <Button>Join</Button>
-        </Card>
+        <div>
+          <span className="font-weight-bold">Exercise List</span>
+        </div>
+        <div className="container">
+          <Card body>
+            <CardTitle>Cycle</CardTitle>
+            <CardText>People: 4</CardText>
+            <Button>Join</Button>
+          </Card>
+          <Card body>
+            <CardTitle>Workout</CardTitle>
+            <CardText>People: 4</CardText>
+            <Button>Join</Button>
+          </Card>
+        </div>
       </div>
     );
   }
