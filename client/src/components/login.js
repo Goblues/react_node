@@ -7,27 +7,29 @@ import {
 } from "react-social-login-buttons";
 
 class Login extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.callAPI = this.callAPI.bind(this);
     this.state = {
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     };
   }
-  callAPI(){
-   fetch('/testAPI', {
-     method: 'post',
-     body: JSON.stringify({
-       a: 5,
-       b: 2
-     }),
-     headers: {"Content-Type": "application/json"}
-   }).then(response => {
-     return response.json()
-   }).then(body => {
-     alert("123");
-   })
+  callAPI() {
+    fetch("/testAPI", {
+      method: "post",
+      body: JSON.stringify({
+        a: 5,
+        b: 2
+      }),
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(body => {
+        alert("123");
+      });
   }
 
   render() {
@@ -37,29 +39,31 @@ class Login extends Component {
           <span className="font-weight-bold">G.X Platform</span>.com
         </h1>
         <h2 className="text-center">Welcome</h2>
-       <Form onSubmit={this.callAPI}>
-            <FormGroup>
-              <Label>Email</Label>
-              <Input 
+        <Form onSubmit={this.callAPI}>
+          <FormGroup>
+            <Label>Email</Label>
+            <Input
               type="email"
               name="email"
               placeholder="Email"
               value={this.state.email}
-              onChange={e => this.setState({email: e.target.value})} 
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label>Password</Label>
-              <Input 
+              onChange={e => this.setState({ email: e.target.value })}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Password</Label>
+            <Input
               type="password"
               name="password"
               placeholder="Password"
               value={this.state.password}
-              onChange={e => this.setState({password: e.target.value})} 
-              />
-            </FormGroup>
-            <Button className="btn-lg btn-dark btn-block" type="submit">Log in</Button>
-          </Form>
+              onChange={e => this.setState({ password: e.target.value })}
+            />
+          </FormGroup>
+          <Button className="btn-lg btn-dark btn-block" type="submit">
+            Log in
+          </Button>
+        </Form>
         <div className="text-center pt-3">Or continue your social accout</div>
         <GoogleLoginButton className="mt-3 mb-3" />
         <FacebookLoginButton className="mt-3 mb-3" />
