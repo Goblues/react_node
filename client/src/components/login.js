@@ -5,6 +5,7 @@ import {
   GoogleLoginButton,
   FacebookLoginButton
 } from "react-social-login-buttons";
+import axios from "axios";
 
 class Login extends Component {
   constructor(props) {
@@ -12,27 +13,33 @@ class Login extends Component {
     this.callAPI = this.callAPI.bind(this);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      a: ""
     };
   }
-  callAPI() {
-    fetch("/testAPI", {
-      method: "post",
-      body: JSON.stringify({
-        a: 5,
-        b: 2
-      }),
-      headers: { "Content-Type": "application/json" }
-    })
-      .then(response => {
-        return response.json();
+  callAPI = async () => {
+    console.log(1);
+    await axios
+      .get("http://localhost:9000/main")
+      .then(res => {
+        this.setState(state => {
+          return { a: res.data.data };
+        });
+        console.log(this.state.a);
       })
-      .then(body => {
-        alert("123");
+      .catch(err => {
+        console.log(err);
       });
+  };
+  componentDidMount() {
+    this.callAPI();
+    console.log(2);
+    console.log(this.state);
+    console.log(this.state.a);
   }
 
   render() {
+    const { email, password, a } = this.state;
     return (
       <Form className="login-form">
         <h1>
